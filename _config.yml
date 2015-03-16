@@ -25,6 +25,20 @@ author:
   bio: travel. data. python
   email_md5:
 
+image:
+  source: images/
+  output: generated
+  presets:
+    users:
+      attr:
+        class: user-portrait
+        itemprop: image
+      width: 350
+    half:
+      width: 400
+      height: 400
+
+
 rss_path: feed.xml
 categories_path: categories.html
 tags_path: tags.html
