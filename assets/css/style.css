@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:500&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Raleway:500&subset=latin,latin-ext);
 
 body{
 	color: #2c3e50;
@@ -7,13 +7,13 @@ body{
 .sidebar {
 	position: fixed;
 	top: 0px;
-	padding-top: 10%;
-	background-color: #828282;
+	padding-top: 5%;
+	background-color: #1F1F21;
 	color: #fff;
 }
 
 .sidebar-header {
-	text-align: center;
+	text-align: left;
 	margin-bottom: 10px;
 }
 .sidebar-header .title{
@@ -37,10 +37,34 @@ a.nav-link i{
 a.nav-link:hover { color: #777 }
 
 #bio {
-	font-family: "Courier New", Courier, monospace;
-	font-size: 11px;
+	font-family: "Raleway", sans-serif;
+	font-size: 20px;
 	margin: 0 auto;
 	margin-bottom: 10px;
+	color: #FF9933;
+}
+
+#about {
+	font-family: "Raleway", sans-serif;
+	font-size: 20px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+}
+
+#author {
+	font-family: "Raleway", sans-serif;
+	font-size: 58px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+#description {
+	font-family: "Raleway", sans-serif;
+	font-size: 24px;
+	font-style: italic;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	color: #8D8D94;
 }
 
 #contact-list li .fa,
@@ -66,7 +90,7 @@ article .share .twitter:hover {
 	color: #CC2127;
 }
 #contact-list li:hover .fa-rss {
-	color: #e74c3c;
+	color: #527ACC;
 }
 article .share .facebook:hover {
 	color: #43609C;
@@ -82,8 +106,7 @@ article .share .gplus:hover {
 }
 
 .page-header {
-	color: #e74c3c;
-	text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+	color: #527ACC;
 }
 
 article{
@@ -109,28 +132,28 @@ article.home div a, article.home pre a { color: #2c3e50; }
 article.home div a:hover, article.home pre a:hover { color: #2c3e50; text-decoration: none; }
 article img { max-width: 100%; }
 
-h1,h2,h3,h4,h5,h6 { font-family: 'Ubuntu', sans-serif; }
+h1,h2,h3,h4,h5,h6 { font-family: 'Raleway', sans-serif; }
 article.home h1,
 article.home h2,
 article.home h3,
 article.home h4,
 article.home h5,
 article.home h6 {
-	font-family: 'Ubuntu', sans-serif;
-	color: #f2756a;
+	font-family: 'Raleway', sans-serif;
+	color: #00002E;
 }
 
 article.home h1 a,
 article.home h2 a,
 article.home h3 a,
 article.home h4 a {
-	color: #f2756a;
+	color: #00002E;
 }
 article.home h1 a:hover,
 article.home h2 a:hover,
 article.home h3 a:hover,
 article.home h4 a:hover {
-	color: #e74c3c;
+	color: #527ACC;
 }
 
 .author .author-image {
@@ -140,7 +163,7 @@ article.home h4 a:hover {
 
 footer {
 	padding-top: 15px;
-	font-family: 'Ubuntu';
+	font-family: 'Raleway';
 }
 
 /* nav-vertical-tabs component */
@@ -166,7 +189,7 @@ footer {
     border-radius: 4px 0 0 4px;
 }
 
-.badge { background: #F2756A; }
+.badge { background: #00002E; }
 
 #nav-menu{
     position: fixed;

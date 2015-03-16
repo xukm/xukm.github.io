@@ -12,18 +12,18 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: dbyll
+      title:
 
-description: Stylish Jekyll Theme
+description: ...rambling on
 author:
-  name: dbyll
-  email: dbyll@ismaildemirbilek.com
-  github: dbtek
-  twitter: dbtek
-  pinterest: asd123
-  linkedin: asd123
-  bio: Your stylish, minimalist theme!
-  email_md5: 726351295ec82e145928582f595aa3aa
+  name: Michael Xu
+  email: mikekxu@gmail.com
+  github: XuKM
+  twitter: MikeKXu
+  pinterest: 
+  linkedin:
+  bio: travel. data. python
+  email_md5:
 
 rss_path: feed.xml
 categories_path: categories.html

@@ -1,20 +1,39 @@
 <! -- sidebar.html -->
+
 <header class="sidebar-header" role="banner">
 	<a href="{{ site.BASE_PATH }}/">
-		<img src="http://www.gravatar.com/avatar/{{site.author.email_md5}}?s=150" class="img-circle" />
+		<img src="https://avatars1.githubusercontent.com/u/6957660?v=3&s=150" class="img-circle" />
 	</a>
 	<h3 class="title">
         <a href="{{ site.BASE_PATH }}/">{{ site.title }}</a>
     </h3>
 </header>
 
+{% if site.author.name %}
+<div id="author" class="text-left">
+	{{ site.author.name }}
+</div>
+{% endif %}
+
+<div id="description" class="text-left">
+	...rambling on
+</div>
+
 {% if site.author.bio %}
-<div id="bio" class="text-center">
+<div id="bio" class="text-left">
 	{{ site.author.bio }}
 </div>
 {% endif %}
 
-<div id="contact-list" class="text-center">
+<div id="about" class="text-left">
+	 <a href="/about">About Me</a> <br>
+	 				<a href="{{ site.BASE_PATH }}/">Home</a> <br>
+				<a href="{{ site.BASE_PATH}}/{{ site.categories_path }}">Categories</a> <br>
+				<a href="{{ site.BASE_PATH}}/{{ site.tags_path }}">Tags</a>
+</div>
+
+
+<div id="contact-list" class="text-left">
 	<ul class="list-unstyled list-inline">
 		{% if site.author.github %}
 		<li>
