@@ -5,11 +5,13 @@ categories: [personal]
 tags: [outdoors, hiking, travel, trip]
 description: Applications of different networks
 ---
-
+*modified repost from chengjun's original post*
 
 ## Introduction
 
-Different from the traditional diffusion research, network diffusion research focuses on how network structure exerts its impact on the diffusion process. In this post, I present how to simulate the most simple network diffusion with R. 
+Networks can be applied to various different problems that have far reaching real world applications. PopSci recently recognized Dr. Barabasi, one of the leaders of the field, as a "Man who could rule the world" http://www.popsci.com/science/article/2011-10/man-could-rule-world.
+
+In this post we examine some of the basic theory behind the ideas, and look at how we can apply transmission models to them to investigate propagation of an idea/disease/product/trend throughout a population.
 
 As the first step, the algorithm is quite simple:
 
@@ -111,17 +113,6 @@ R you Ready? Now we can start the contagion!
 
 Let's look at the diffusion curve first:
 
-    # "growth_curve"
-    num_cum = unlist(lapply(1:i, function(x) length(infected［x］) ))
-    p_cum = num_cum/max(num_cum)
-    time = 1:i
-    
-    png(file = "./temporal_growth_curve.png", 
-    	width=5, height=5, 
-    	units="in", res=300)
-    plot(p_cum~time, type = "b")
-    dev.off()
-
 ![](http://farm8.staticflickr.com/7299/12845959103_e19cd9cd99_n.jpg)
 
 To visualize the diffusion process, we label the infected nodes with the red color.
@@ -161,30 +152,6 @@ I make the animated gif using the package animation developed by Yihui Xie.
 ![](http://farm4.staticflickr.com/3675/12826584484_7c6f35380c_o.gif)
 
 ![](http://farm8.staticflickr.com/7432/12826173045_ef3548ec04_o.gif)
-
-Similar to Netlogo (a software used for agent-based modeling), we can monitor the dynamic diffusion process with multiple plots. 
- 
-	saveGIF({
-	  ani.options(interval = 0.5, convert = shQuote("C:/Program Files/ImageMagick-6.8.8-Q16/convert.exe"))
-	  # start the plot
-	  m = 1
-	  while(m <= length(infected)){
-	    # start the plot
-	    layout(matrix(c(1, 2, 1, 3), 2,2, byrow = TRUE), widths=c(3,1), heights=c(1, 1))
-	    V(g)$color <- "white"
-	    V(g)$color[V(g)%in%infected[[m]]] = "red"
-	    num_cum = unlist(lapply(1:m, function(x) length(infected[[x]]) ))
-	    p_cum = num_cum/size
-	    p = diff(c(0, p_cum))
-	    time = 1:m
-	    plot(g, layout =layout.old, edge.arrow.size=0.2)
-	    title(paste("Scale-free Network \n Day", m))
-	    plot(p_cum~time, type = "b", ylab = "CDF", xlab = "Time",
-	         xlim = c(0,i), ylim =c(0,1))
-	    plot(p~time, type = "h", ylab = "PDF", xlab = "Time",
-	         xlim = c(0,i), ylim =c(0,1), frame.plot = FALSE)
-	    m = m + 1}
-	}, ani.width = 800, ani.height = 500)
 
 ![](http://farm4.staticflickr.com/3672/12848749413_7f9da8b8c7_o.gif)
 
