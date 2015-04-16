@@ -27,6 +27,10 @@ gem 'minitest-reporters'
 gem 'minitest-profile'
 gem 'test-unit' if RUBY_PLATFORM =~ /cygwin/ || RUBY_VERSION.start_with?("2.2")
 gem 'rspec-mocks'
+require 'json'
+require 'open-uri'
+versions = JSON.parse(open('https://pages.github.com/versions.json').read)
+gem 'github-pages', versions['github-pages']
 if ENV['BENCHMARK']
 gem 'rbtrace'
 gem 'stackprof'
@@ -35,3 +39,4 @@ end
 if ENV['PROOF']
 gem 'html-proofer', '~> 2.0'
 end
+
