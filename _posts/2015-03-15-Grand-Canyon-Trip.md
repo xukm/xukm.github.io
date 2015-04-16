@@ -139,12 +139,6 @@ R you Ready? Now we can start the contagion!
 	  i = i + 1
 	}
 
-Let's look at the diffusion curve first:
-
-
-![](http://farm4.staticflickr.com/3675/12826584484_7c6f35380c_o.gif)
-
-![](http://farm8.staticflickr.com/7432/12826173045_ef3548ec04_o.gif)
 
 ![](http://farm4.staticflickr.com/3672/12848749413_7f9da8b8c7_o.gif)
 
