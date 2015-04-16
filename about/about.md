@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Fourth year Bachelor of Health Sciences student exploring the world through travel and statistics. I have a keen interest in analyzing data as well as how to best present it in the visual medium.
+Fourth year Bachelor of Health Sciences student at McMaster University exploring the world through travel and statistics. I have a keen interest in analyzing data as well as how to best present it in the visual medium.
 
 ###Skills
 
@@ -22,15 +22,14 @@ My current research interests revolve around statistical and machine learning me
 
 ####Current Projects
 * Early Warning Score Validation and Improvement: looking into the current Hamilton Early Warning Score system and identifying an appopriate threshold for rapid response team activation, as well as identifying which vitals signs may be more predictive of critical outcomes
-* Personal Project: SEIR Model of Flu Transmission through a community
+* Personal Project: SEIR Model of Flu Transmission through scale free network graph populations
 
-####Selected Publications
-#####Journals
+####Journals
 Xu, M., Tam B., Thabane L., & Fox-Robichaud A. (2015). Protocol for the Validation of Hamilton
 Early Warning Score using Decision Tree Methodology and Big Data. To BMJ Open (in
 preparation)
 
-#####Conference Abstracts and Posters
+####Conference Abstracts and Posters
 
 Xu, M., Tam B., Thabane L., & Fox-Robichaud A. (2015). Validation of an Electronic Early Warning
 Score using Decision Tree Methodology with Big Data: Proposal. To 35th International
