@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Applications of networks
+title: Applications of Networks
 categories: 
   - personal
 tags: 
