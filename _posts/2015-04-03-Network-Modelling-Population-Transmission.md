@@ -1,8 +1,4 @@
 ---
-published: true
----
-
----
 layout: post
 title: Applications of networks
 categories: [personal]
