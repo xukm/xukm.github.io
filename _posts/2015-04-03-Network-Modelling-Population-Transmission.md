@@ -30,13 +30,9 @@ This is a basic epidemiological model where individuals exist as either one of t
 
 Given the transmission rate $\beta$, SI model can be described as:
 
-$$
-\frac{dS}{dt}=-\beta SI
-$$
+$\frac{dS}{dt}=-\beta SI$
 
-$$
-\frac{dI}{dt}=\beta SI
-$$
+$\frac{dI}{dt}=\beta SI$
 
 These two equations yield a logistic growth function when solved. The defining characteristic of the logistic growth function is its sigmoidal shape at which there is a critical point from which growth becomes much more rapid. This can be thought of as the tipping point for a trend on twitter, the adoption of a new generation of product, the point at which confidence in a market crashes, etc.
 
