@@ -44,24 +44,52 @@ In this post, I intend to bring the network back into the simulation of SI model
 
 ## Generate the network
 
-	require(igraph)
-	# generate a social graph
-	size = 50
-	
-	# regular network
-	g = graph.tree(size, children = 2); plot(g)
-	g = graph.star(size); plot(g)
-	g = graph.full(size); plot(g)
-	g = graph.ring(size); plot(g)
-	g = connect.neighborhood(graph.ring(size), 2); plot(g) # 最近邻耦合网络
-	
-	# random network
-	g = erdos.renyi.game(size, 0.1)
+import random
 
-	# small-world network
-	g = rewire.edges(erdos.renyi.game(size, 0.1), prob = 0.8 )
-    # scale-free network
-	g = barabasi.game(size) ; plot(g)
+def BA_graphgen(nodes, edges, seed_size, seed_edge_density): # function to generate a population adjacency graph in B-A distribution
+
+	graph = []
+	numEdges = 0 # tracking variable to count total number of edges
+	if edges < 1 or edges >= (seed_size + 1): # check to see we are generating edges and that there aren't more edges than nodes initially in seed
+		raise Exception("Number of edges must be equal to greater than 1 and less than seed size + 1 number of nodes")
+	if seed_edge_density <= 0 or type(seed_edge_density) != int: # check to see that the
+		raise Exception("Seed edge density must be greater than zero and be an integer.")
+
+	# GENERATE ZEROS SEED
+	A=[] #initialize blank list
+	for i in range(seed_size): # set column length
+		for j in range(seed_size): # set row length
+				A.append(0) # add zeros equivalent to seed size desired, this generates the number of columns
+		graph.append(A) # add this as a new row
+		A = [] # blank list A again
+
+	# Generate edges between nodes for seed graph
+	for i in range(len(graph[0])): # for each element of the seed graph (row or col, doesn't matter due to symmetry)
+		for j in range(len(graph[0])): # for each element of the seed graph (row or col, doesn't matter due to symmetry)
+			rand = random.randint(0,10) # determine connection probability
+			if rand % (10 - seed_edge_density) != 0: # seed edge density is an arbitrary number that determines how much linkage goes on, lower numbers indicate lower density
+				graph[i][j] = graph[j][i] = 1 # set the connection to be 1, indicating an edge of weight 1
+				numEdges += 1 # total degree counter increase by 1
+			if i == j: # when col and row indicies are the same, set the connection to 1 as a node must be connected to itself
+				graph[i][j] = graph[j][i] = 1 # see above
+				break
+
+	# Add new nodes and attach them
+	for n in range(nodes-seed_size): # add nodes equal to total node wanted subtract the nodes already in the seed graph
+		for i in range(len(graph)): # check the row length of the current graph
+			graph[i].append(0) # add zeros to the end of every row
+		graph.append([0]*len(graph[0])) # add another row of zeros
+		graph[-1][-1] = 1 # set the bottom right most element to 1, this is because all connections are connected to themselves
+		node = n + seed_size # set current node position to be n, which is the index of new node, plus the original seed size index
+		NodeEdges = 0 # each node needs to have an "edges" number of edges
+		while NodeEdges < edges: # while we have less edges than desired for that new node
+			node_visit = random.randint(0,len(graph[0])-1) # randomly visit another node in the population
+			p = sum(graph[node_visit])/numEdges # the probability of attachment is equal to the number of edges the visited node has over the total number of edges
+			if p > random.random() and graph[node][node_visit] != 1: # if there isn't already a connection and the generated number is less than the probability of attachment, create an edge
+				graph[node][node_visit] = graph[node_visit][node] = 1 # set an edge
+				numEdges += 1 # increase number of total edges
+				NodeEdges += 1 # increas number of edges for the current node
+	return graph # return the generated adjacency matrix
 	
 
 
@@ -113,41 +141,6 @@ R you Ready? Now we can start the contagion!
 
 Let's look at the diffusion curve first:
 
-![](http://farm8.staticflickr.com/7299/12845959103_e19cd9cd99_n.jpg)
-
-To visualize the diffusion process, we label the infected nodes with the red color.
-
-	E(g)$color = "blueviolet"
-	V(g)$color = "white"
-	set.seed(2014); layout.old = layout.fruchterman.reingold(g) 
-	V(g)$color[V(g)%in%diffusers] = "red"
-	plot(g, layout =layout.old)
-
-I make the animated gif using the package animation developed by Yihui Xie.
-
-	library(animation)
-	
-	saveGIF({
-	  ani.options(interval = 0.5, convert = shQuote("C:/Program Files/ImageMagick-6.8.8-Q16/convert.exe"))
-	  # start the plot
-	  m = 1
-	  while(m <= length(infected)){
-	    V(g)$color = "white"
-	    V(g)$color[V(g)%in%infected[[m]]] = "red"
-	    plot(g, layout =layout.old)
-	    m = m + 1}
-	})
-
-
-![](http://farm4.staticflickr.com/3806/12826172695_368a6f50a2_o.gif)
-
-![](http://farm3.staticflickr.com/2848/12826237753_d8c97b1019_o.gif)
-
-![](http://farm4.staticflickr.com/3729/12826584654_c84452f397_o.gif)
-
-![](http://farm3.staticflickr.com/2851/12826173505_34649f488d_o.gif)
-
-![](http://farm8.staticflickr.com/7391/12826173255_574e471023_o.gif)
 
 ![](http://farm4.staticflickr.com/3675/12826584484_7c6f35380c_o.gif)
 
